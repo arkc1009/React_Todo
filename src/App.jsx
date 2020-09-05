@@ -4,11 +4,11 @@ import CreateTodo from "./Component/CreateTodo";
 import TodoList from "./Component/TodoList";
 
 const Container = styled.div`
-    width: 1000px;
-    margin: 0 auto;
-    margin-top: 20px;
-    box-shadow: 1px 1px 10px 1px grey;
-  `;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 20px;
+  box-shadow: 1px 1px 10px 1px grey;
+`;
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -64,6 +64,14 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const onToggle = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
+  };
+
   return (
     <Container>
       <CreateTodo
@@ -72,7 +80,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <TodoList todos={todos} onRemove={onRemove} />
+      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
     </Container>
   );
 }
