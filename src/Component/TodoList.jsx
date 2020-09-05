@@ -61,6 +61,7 @@ const Checkbtn = styled.button`
   overflow: hidden;
   background-color: powderblue;
   border: 1px solid #fff;
+  outline: none;
   ${Anispan} {
     opacity: 0%;
   }
