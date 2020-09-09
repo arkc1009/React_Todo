@@ -10,9 +10,9 @@ const Todolist = styled.ul`
 const Cdiv = styled.div`
   width: 100%;
   background-color: white;
-  opacity: ${props => props.checked ? '0.3' : '1'};
+  opacity: ${(props) => (props.checked ? "0.3" : "1")};
   margin-bottom: 20px;
-  box-shadow: 0px 0px 10px 1px ${props => props.checked ? 'salmon' : 'grey'};
+  box-shadow: 0px 0px 10px 1px ${(props) => (props.checked ? "salmon" : "grey")};
   transition: transform 0.2s, opacity 1s, box-shadow 1s;
   padding: 20px;
   &:hover {
@@ -22,7 +22,7 @@ const Cdiv = styled.div`
 
 const Anispan = styled.span`
   transition: all 1s;
-  `;
+`;
 const Textopaup = keyframes`
   0% { opacity: 0 }
   100% { opacity: 1 }
@@ -49,7 +49,6 @@ const Delbtn = styled.button`
       animation: ${Textopaup} 1s forwards;
     }
   }
-  
 `;
 
 const Checkbtn = styled.button`
@@ -82,15 +81,19 @@ const Todo = ({ todo, onRemove, onToggle }) => {
       <b>{todo.title}</b> <br />
       <hr />
       <p>{todo.content}</p>
-      <Delbtn onClick={() => onRemove(todo.id)}><Anispan>제거하시겠습니까?</Anispan></Delbtn>
-      <Checkbtn onClick={() => onToggle(todo.id)}><Anispan>{todo.checked ? '완료 취소..' : '할일 완료!'}</Anispan></Checkbtn>
+      <Delbtn onClick={() => onRemove(todo.id)}>
+        <Anispan>제거하시겠습니까?</Anispan>
+      </Delbtn>
+      <Checkbtn onClick={() => onToggle(todo.id)}>
+        <Anispan>{todo.checked ? "완료 취소.." : "할일 완료!"}</Anispan>
+      </Checkbtn>
     </Cdiv>
   );
 };
 
 const TodoList = ({ todos, onRemove, onToggle }) => {
   const todolist = todos.map((todo) => (
-    <Todo todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle}/>
+    <Todo todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} />
   ));
   return (
     <div>
