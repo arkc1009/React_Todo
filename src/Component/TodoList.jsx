@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Todolist = styled.ul`
@@ -76,6 +76,14 @@ const Checkbtn = styled.button`
 `;
 
 const Todo = ({ todo, onRemove, onToggle }) => {
+  useEffect(() => {
+    console.log("todo 값 설정됨");
+    console.log(todo);
+    return () => {
+      console.log("todo 값 바뀌기 전");
+    console.log(todo);
+    };
+  });
   return (
     <Cdiv checked={todo.checked}>
       <b>{todo.title}</b> <br />

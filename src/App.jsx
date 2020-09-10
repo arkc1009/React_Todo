@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import CreateTodo from "./Component/CreateTodo";
 import TodoList from "./Component/TodoList";
+import swal from 'sweetalert';
 
 const Container = styled.div`
   width: 1000px;
@@ -48,8 +49,15 @@ function App() {
       title,
       content,
     };
-    console.log(todo);
-    console.log(title, content);
+    if (todo.title.trim() === "" || todo.content.trim() === "") {
+      swal({
+        title: '죄송해요!',
+        text: '제목 또는 내용이 비워져 있어요',
+        icon: 'error',
+      });
+      return;
+    } 
+  
     setTodos([...todos, todo]);
 
     setInputs({

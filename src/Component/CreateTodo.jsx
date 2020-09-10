@@ -10,7 +10,12 @@ const Inputdiv = styled.div`
 `;
 
 const Textinput = styled.input`
+  padding: 10px;
+  width: ${props => (props.name === 'title') ? '50%' : '70%'};
   margin-bottom: 15px;
+  &::placeholder {
+    text-align: center;
+  }
 `;
 
 const CreateTodo = ({ title, content, onChange, onCreate }) => {
